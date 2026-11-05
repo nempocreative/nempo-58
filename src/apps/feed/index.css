@@ -1895,12 +1895,6 @@
 .ddh-logo { position: relative; width: 84%; opacity: 0; will-change: transform, opacity;
   filter: drop-shadow(0 0 3cqw color-mix(in oklab, var(--ddh-pink) 70%, transparent)); animation-name: ddh-logo; }
 .ddh-portrait .ddh-logo { width: 96%; }
-.ddh-lines { position: relative; display: grid; justify-items: center; }
-.ddh-line { grid-area: 1 / 1; text-align: center; font: 900 italic 9cqw/1 'Arial Black', Impact, sans-serif; color: var(--ddh-gold);
-  -webkit-text-stroke: .5cqw var(--ddh-pink); text-shadow: 0 0 3cqw var(--ddh-orange), .6cqw .6cqw 0 var(--ddh-night); opacity: 0; will-change: transform, opacity; }
-.ddh-line-1 { animation-name: ddh-line1; }
-.ddh-line-2 { color: var(--ddh-orange); -webkit-text-stroke-color: var(--ddh-gold); animation-name: ddh-line2; }
-.ddh-portrait .ddh-line { font-size: 11cqw; }
 .ddh-fog { position: absolute; left: -20%; right: -20%; bottom: -5%; height: 30%; background: radial-gradient(ellipse at center, color-mix(in oklab, var(--ddh-ink) 25%, transparent), transparent 70%);
   filter: blur(10px); animation: ddh-fog 7s ease-in-out infinite alternate; }
 .ddh-fade { position: absolute; inset: 0; background: var(--ddh-night); animation-name: ddh-fade; }
