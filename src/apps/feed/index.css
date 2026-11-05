@@ -1876,6 +1876,7 @@
   background: var(--ddh-night); border-radius: 12px; container-type: inline-size;
 }
 .ddh-landscape { aspect-ratio: 4 / 3; }
+.ddh-wide { aspect-ratio: 3 / 2; }
 .ddh-portrait { aspect-ratio: 3 / 4; width: min(100%, 640px); }
 .ddh-stage * { animation-duration: var(--ddh-t); animation-iteration-count: infinite; animation-timing-function: ease-in-out; }
 .ddh-stage.is-paused * { animation-play-state: paused; }
@@ -1899,9 +1900,10 @@
   rotate: -5deg; animation-name: ddh-logo; }
 .ddh-mark { --s: 1; }
 .ddh-portrait .ddh-mark { --s: 1.35; }
+.ddh-wide .ddh-mark { --s: .92; }
 .ddh-prop { position: absolute; z-index: 0; pointer-events: none; }
 .ddh-portrait .ddh-prop-pumpkin { left: -1%; }
-.ddh-portrait .ddh-prop-kendang { right: -5%; }
+.ddh-portrait .ddh-prop-kendang { right: -4%; top: 102%; }
 .ddh-prop-pumpkin { width: calc(19cqw * var(--s)); left: -9%; top: -24%; rotate: -8deg; animation: ddh-bob 3.2s ease-in-out infinite alternate; }
 .ddh-prop-bat { width: calc(17cqw * var(--s)); right: -4%; top: -23%; rotate: 6deg; transform-origin: 50% 40%; animation: ddh-flap .9s ease-in-out infinite alternate; }
 .ddh-prop-kendang { width: calc(15cqw * var(--s)); right: -15%; top: 30%; rotate: 8deg; transform-origin: 30% 20%; animation: ddh-tabuh .47s ease-in-out infinite alternate; }
@@ -1909,6 +1911,7 @@
 .ddh-word { display: grid; font-family: 'Shrikhand', serif; font-size: 15.5cqw; line-height: .86; letter-spacing: .01em; }
 .ddh-word + .ddh-word { margin-top: -.5cqw; translate: 3cqw 0; }
 .ddh-portrait .ddh-word { font-size: 21cqw; }
+.ddh-wide .ddh-word { font-size: 13.6cqw; }
 .ddh-word > span { grid-area: 1 / 1; }
 .ddh-word-line { color: var(--ddh-orange); -webkit-text-stroke: 1.6cqw var(--ddh-orange); }
 .ddh-word-face { color: transparent; -webkit-text-stroke: .35cqw var(--ddh-plum);
@@ -1918,6 +1921,7 @@
   -webkit-text-stroke: .9cqw var(--ddh-orange); paint-order: stroke fill;
   opacity: 0; animation-name: ddh-sub; }
 .ddh-portrait .ddh-sub { font-size: 9cqw; }
+.ddh-wide .ddh-sub { font-size: 6.3cqw; }
 .ddh-fog { position: absolute; left: -20%; right: -20%; bottom: -5%; height: 30%; background: radial-gradient(ellipse at center, color-mix(in oklab, var(--ddh-ink) 25%, transparent), transparent 70%);
   filter: blur(10px); animation: ddh-fog 7s ease-in-out infinite alternate; }
 .ddh-fade { position: absolute; inset: 0; background: var(--ddh-night); animation-name: ddh-fade; }

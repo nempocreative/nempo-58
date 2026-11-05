@@ -7,9 +7,11 @@ import pumpkin from '@/assets/ddh-pumpkin.png';
 import bat from '@/assets/ddh-bat.png';
 import kendang from '@/assets/ddh-kendang.png';
 
-type Ratio = 'landscape' | 'portrait';
+type Ratio = 'landscape' | 'wide' | 'portrait';
 
-/** Bumper 3: 14-second Halloween dangdut opener for the videotron, in 4:3 landscape or 3:4 portrait. */
+const RATIO_LABEL: Record<Ratio, string> = { landscape: '4:3', wide: '3:2', portrait: '3:4' };
+
+/** Bumper 3: 14-second Halloween dangdut opener for the videotron, in 4:3 / 3:2 landscape or 3:4 portrait. */
 export function DangdutHalloweenBumper() {
   const [ratio, setRatio] = useState<Ratio>('landscape');
   const [playing, setPlaying] = useState(true);
@@ -19,6 +21,7 @@ export function DangdutHalloweenBumper() {
     <section className="mc-bumper-tool" aria-label="Bumper 3: Dangdut Halloween Saduli Ragap">
       <div className="mc-bumper-controls">
         <Button variant={ratio === 'landscape' ? 'default' : 'outline'} onClick={() => setRatio('landscape')}>Landscape 4:3</Button>
+        <Button variant={ratio === 'wide' ? 'default' : 'outline'} onClick={() => setRatio('wide')}>Landscape 3:2</Button>
         <Button variant={ratio === 'portrait' ? 'default' : 'outline'} onClick={() => setRatio('portrait')}>Portrait 3:4</Button>
         <Button variant="outline" size="icon" aria-label={playing ? 'Jeda' : 'Putar'} onClick={() => setPlaying(!playing)}>
           {playing ? <Pause /> : <Play />}
@@ -28,7 +31,7 @@ export function DangdutHalloweenBumper() {
       <div
         key={`${ratio}-${version}`}
         className={`ddh-stage ddh-${ratio}${playing ? '' : ' is-paused'}`}
-        aria-label={`Bumper dangdut Halloween ${ratio === 'landscape' ? '4:3' : '3:4'}`}
+        aria-label={`Bumper dangdut Halloween ${RATIO_LABEL[ratio]}`}
       >
         <img className="ddh-bg" src={stage} alt="" aria-hidden="true" />
         <div className="ddh-tint" aria-hidden="true" />
