@@ -69,6 +69,7 @@ import { SlideThirtyFourSongRequest } from './components/SlideThirtyFourSongRequ
 import { MusiComedyRundown } from './components/MusiComedyRundown';
 import { MusiComedyBumper } from './components/MusiComedyBumper';
 import { NempoLogoOpening } from './components/NempoLogoOpening';
+import { DangdutHalloweenBumper } from './components/DangdutHalloweenBumper';
 import { Button } from '@/components/ui/button';
 import { renderNempoSlide20Png } from './lib/renderNempoSlide20Png';
 import {
@@ -2654,6 +2655,7 @@ function App() {
     | 'rundown'
     | 'bumper'
     | 'bumper-logo'
+    | 'bumper-dangdut'
   >('nempo');
   const [activeSlide, setActiveSlide] = useState<FeedSlide>(32);
   const [activeClientSlide, setActiveClientSlide] = useState<ClientSlide>(3);
@@ -2671,7 +2673,8 @@ function App() {
   const isCoupon = activeFeed === 'coupon';
   const isQCard = activeFeed === 'qcard';
   const isRundown = activeFeed === 'rundown';
-  const isBumper = activeFeed === 'bumper' || activeFeed === 'bumper-logo';
+  const isBumper = activeFeed === 'bumper' || activeFeed === 'bumper-logo' || activeFeed === 'bumper-dangdut';
+  const isDangdutBumper = activeFeed === 'bumper-dangdut';
   const isLogoBumper = activeFeed === 'bumper-logo';
   const isPhotobooth = activeFeed === 'photobooth';
   const isMemberCard = activeFeed === 'member-card';
@@ -3030,6 +3033,7 @@ function App() {
           </button>
           <Button role="tab" aria-selected={activeFeed === 'bumper'} onClick={() => setActiveFeed('bumper')} className="mc-bumper-tab" variant="ghost" size="sm">Bumper Acara</Button>
           <Button role="tab" aria-selected={isLogoBumper} onClick={() => setActiveFeed('bumper-logo')} className="mc-bumper-tab" variant="ghost" size="sm">Bumper 2 · Opening Logo</Button>
+          <Button role="tab" aria-selected={isDangdutBumper} onClick={() => setActiveFeed('bumper-dangdut')} className="mc-bumper-tab" variant="ghost" size="sm">Bumper 3 · Dangdut Halloween</Button>
           <button
             type="button"
             role="tab"
@@ -3235,6 +3239,8 @@ function App() {
           <GgsCouponDesigner />
         ) : isRundown ? (
           <MusiComedyRundown exportRef={exportRef} />
+        ) : isDangdutBumper ? (
+          <DangdutHalloweenBumper />
         ) : isLogoBumper ? (
           <NempoLogoOpening />
         ) : isBumper ? (
