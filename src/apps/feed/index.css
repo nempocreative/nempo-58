@@ -1919,7 +1919,6 @@
 @keyframes ddh-zoom { 0% { scale: 1.15; } 100% { scale: 1; } }
 @keyframes ddh-sweep { from { rotate: -22deg; } to { rotate: 22deg; } }
 @keyframes ddh-bat { 0% { translate: 0 0; } 50% { translate: 60cqw -4cqw; } 100% { translate: 130cqw 2cqw; } }
-@keyframes ddh-rise { 0% { opacity: 0; translate: 0 0; } 20% { opacity: 1; } 100% { opacity: 0; translate: 2cqw -90cqw; } }
 @keyframes ddh-fade { 0% { opacity: 1; } 4% { opacity: 0; } 95% { opacity: 0; } 100% { opacity: 1; } }
 @keyframes ddh-presents { 0%, 4% { opacity: 0; scale: .9; } 9%, 22% { opacity: 1; scale: 1; } 26%, 100% { opacity: 0; scale: 1.1; } }
 @keyframes ddh-flash { 0%, 25% { opacity: 0; } 27% { opacity: .55; } 32%, 100% { opacity: 0; } }
