@@ -39,10 +39,6 @@ export function DangdutHalloweenBumper() {
         </div>
         <div className="ddh-stack">
           <img className="ddh-logo" src={showLogo} alt="Saduli Ragap — Dangdut Halloween Night" />
-          <div className="ddh-lines">
-            <div className="ddh-line ddh-line-1">Goyang Seram</div>
-            <div className="ddh-line ddh-line-2">Malam Ini!</div>
-          </div>
         </div>
         <div className="ddh-fog" aria-hidden="true" />
         <div className="ddh-fade" aria-hidden="true" />
