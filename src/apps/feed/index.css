@@ -1899,7 +1899,7 @@
   rotate: -5deg; animation-name: ddh-logo; }
 .ddh-word { display: grid; font-family: 'Shrikhand', serif; font-size: 15.5cqw; line-height: .86; letter-spacing: .01em; }
 .ddh-word + .ddh-word { margin-top: -.5cqw; translate: 3cqw 0; }
-.ddh-portrait .ddh-word { font-size: 19cqw; }
+.ddh-portrait .ddh-word { font-size: 21cqw; }
 .ddh-word > span { grid-area: 1 / 1; }
 .ddh-word-back { color: var(--ddh-plum); -webkit-text-stroke: 3.4cqw var(--ddh-plum);
   text-shadow: 0 .5cqw 0 var(--ddh-plum), 0 1cqw 0 var(--ddh-plum), 0 1.5cqw 0 var(--ddh-plum), 0 2cqw 0 var(--ddh-plum),
@@ -1911,7 +1911,7 @@
 .ddh-sub { margin-top: 1.4cqw; font-family: 'Yellowtail', cursive; font-size: 7cqw; line-height: 1; color: var(--ddh-cream);
   -webkit-text-stroke: .9cqw var(--ddh-plum); paint-order: stroke fill; text-shadow: 0 .5cqw 0 var(--ddh-plum);
   opacity: 0; animation-name: ddh-sub; }
-.ddh-portrait .ddh-sub { font-size: 8.4cqw; }
+.ddh-portrait .ddh-sub { font-size: 9cqw; }
 .ddh-fog { position: absolute; left: -20%; right: -20%; bottom: -5%; height: 30%; background: radial-gradient(ellipse at center, color-mix(in oklab, var(--ddh-ink) 25%, transparent), transparent 70%);
   filter: blur(10px); animation: ddh-fog 7s ease-in-out infinite alternate; }
 .ddh-fade { position: absolute; inset: 0; background: var(--ddh-night); animation-name: ddh-fade; }
