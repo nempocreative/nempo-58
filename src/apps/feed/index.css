@@ -1902,11 +1902,11 @@
 .ddh-portrait .ddh-mark { --s: 1.35; }
 .ddh-wide .ddh-mark { --s: .92; }
 .ddh-prop { position: absolute; z-index: 0; pointer-events: none; }
-.ddh-portrait .ddh-prop-pumpkin { left: -1%; }
-.ddh-portrait .ddh-prop-kendang { right: -4%; top: 102%; }
-.ddh-prop-pumpkin { width: calc(19cqw * var(--s)); left: -12%; top: -24%; rotate: -8deg; animation: ddh-bob 3.2s ease-in-out infinite alternate; }
+.ddh-portrait .ddh-prop-pumpkin { left: 1%; }
+.ddh-portrait .ddh-prop-kendang { right: 0%; top: 102%; }
+.ddh-prop-pumpkin { width: calc(19cqw * var(--s)); left: -10%; top: -24%; rotate: -8deg; animation: ddh-bob 3.2s ease-in-out infinite alternate; }
 .ddh-prop-bat { width: calc(17cqw * var(--s)); right: -4%; top: -23%; rotate: 6deg; transform-origin: 50% 40%; animation: ddh-flap .9s ease-in-out infinite alternate; }
-.ddh-prop-kendang { width: calc(15cqw * var(--s)); right: -19%; top: 30%; rotate: 8deg; transform-origin: 30% 20%; animation: ddh-tabuh .47s ease-in-out infinite alternate; }
+.ddh-prop-kendang { width: calc(15cqw * var(--s)); right: -13%; top: 30%; rotate: 8deg; transform-origin: 30% 20%; animation: ddh-tabuh .47s ease-in-out infinite alternate; }
 .ddh-word, .ddh-sub { position: relative; z-index: 1; }
 .ddh-word { display: grid; font-family: 'Shrikhand', serif; font-size: 18.2cqw; line-height: .86; letter-spacing: .01em; }
 .ddh-word + .ddh-word { margin-top: -.5cqw; translate: 3cqw 0; }
