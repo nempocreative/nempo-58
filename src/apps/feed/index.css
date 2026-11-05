@@ -1890,8 +1890,7 @@
   left: calc(5% + var(--i) * 5.2%); bottom: -5%; opacity: 0; animation: ddh-rise 3s ease-out infinite; animation-delay: calc(var(--i) * -0.37s); }
 .ddh-flash { position: absolute; inset: 0; background: var(--ddh-ink); opacity: 0; animation-name: ddh-flash; }
 .ddh-presents { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 2cqw; opacity: 0; animation-name: ddh-presents; }
-.ddh-presents img { width: 38cqw; mix-blend-mode: screen; }
-.ddh-presents span { color: var(--ddh-gold); font: italic 600 3.4cqw/1 Georgia, serif; letter-spacing: .3em; text-transform: uppercase; }
+.ddh-presents img { width: 38cqw; filter: drop-shadow(0 0 2.5cqw color-mix(in oklab, var(--ddh-gold) 55%, transparent)); }
 .ddh-logo { position: absolute; left: 50%; top: 44%; width: 84%; translate: -50% -50%; opacity: 0;
   filter: drop-shadow(0 0 3cqw color-mix(in oklab, var(--ddh-pink) 70%, transparent)); animation-name: ddh-logo; }
 .ddh-portrait .ddh-logo { width: 96%; top: 40%; }
