@@ -1903,7 +1903,7 @@
 .ddh-wide .ddh-mark { --s: .92; }
 .ddh-prop { position: absolute; z-index: 0; pointer-events: none; }
 .ddh-portrait .ddh-prop-pumpkin { left: -1%; }
-.ddh-portrait .ddh-prop-kendang { right: -5%; }
+.ddh-portrait .ddh-prop-kendang { right: -4%; top: 102%; }
 .ddh-prop-pumpkin { width: calc(19cqw * var(--s)); left: -9%; top: -24%; rotate: -8deg; animation: ddh-bob 3.2s ease-in-out infinite alternate; }
 .ddh-prop-bat { width: calc(17cqw * var(--s)); right: -4%; top: -23%; rotate: 6deg; transform-origin: 50% 40%; animation: ddh-flap .9s ease-in-out infinite alternate; }
 .ddh-prop-kendang { width: calc(15cqw * var(--s)); right: -15%; top: 30%; rotate: 8deg; transform-origin: 30% 20%; animation: ddh-tabuh .47s ease-in-out infinite alternate; }
