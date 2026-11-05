@@ -51,7 +51,6 @@ export function DangdutHalloweenBumper() {
             <img className="ddh-prop ddh-prop-kendang" src={kendang} alt="" aria-hidden="true" />
             {['SADULI', 'RAGAP'].map((word) => (
               <span key={word} className="ddh-word" aria-hidden="true">
-                <span className="ddh-word-back">{word}</span>
                 <span className="ddh-word-line">{word}</span>
                 <span className="ddh-word-face">{word}</span>
               </span>
