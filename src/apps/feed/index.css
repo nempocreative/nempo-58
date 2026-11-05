@@ -1897,6 +1897,13 @@
 .ddh-stack { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 3cqw; }
 .ddh-mark { position: relative; display: grid; justify-items: center; opacity: 0; will-change: transform, opacity;
   rotate: -5deg; animation-name: ddh-logo; }
+.ddh-mark { --s: 1; }
+.ddh-portrait .ddh-mark { --s: 1.35; }
+.ddh-prop { position: absolute; z-index: 0; pointer-events: none; filter: drop-shadow(0 1cqw 1.5cqw color-mix(in oklab, black 60%, transparent)); }
+.ddh-prop-pumpkin { width: calc(19cqw * var(--s)); left: -9%; top: -24%; rotate: -8deg; animation: ddh-bob 3.2s ease-in-out infinite alternate; }
+.ddh-prop-bat { width: calc(17cqw * var(--s)); right: -4%; top: -23%; rotate: 6deg; transform-origin: 50% 40%; animation: ddh-flap .9s ease-in-out infinite alternate; }
+.ddh-prop-kendang { width: calc(15cqw * var(--s)); right: -15%; top: 30%; rotate: 8deg; transform-origin: 30% 20%; animation: ddh-tabuh .47s ease-in-out infinite alternate; }
+.ddh-word, .ddh-sub { position: relative; z-index: 1; }
 .ddh-word { display: grid; font-family: 'Shrikhand', serif; font-size: 15.5cqw; line-height: .86; letter-spacing: .01em; }
 .ddh-word + .ddh-word { margin-top: -.5cqw; translate: 3cqw 0; }
 .ddh-portrait .ddh-word { font-size: 21cqw; }
@@ -1933,5 +1940,8 @@
   98%, 100% { opacity: 0; scale: 1.07; }
 }
 @keyframes ddh-sub { 0%, 31% { opacity: 0; translate: 0 2cqw; } 37%, 93% { opacity: 1; translate: 0 0; } 98%, 100% { opacity: 0; } }
+@keyframes ddh-bob { from { translate: 0 0; } to { translate: 0 -1.2cqw; } }
+@keyframes ddh-flap { from { scale: 1 1; } to { scale: 1 .82; translate: 0 -.8cqw; } }
+@keyframes ddh-tabuh { from { scale: 1; } to { scale: 1.04; } }
 @keyframes ddh-fog { from { translate: -5% 0; } to { translate: 5% 0; } }
 @media (prefers-reduced-motion: reduce) { .ddh-stage * { animation: none !important; } .ddh-mark, .ddh-sub { opacity: 1; scale: 1; } .ddh-fade, .ddh-presents, .ddh-flash { opacity: 0; } }
