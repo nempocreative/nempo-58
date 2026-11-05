@@ -58,3 +58,4 @@
 - [x] Bumper 3: ukuran landscape 3:2 ditambahkan; kendang di ukuran portrait dipindah ke bawah tulisan supaya tidak tertutup huruf.
 - [x] Bumper 3: tulisan acara dan logo Saduli Ragap di segment pembuka diperbesar; labu dan kendang digeser lebih ke kiri/kanan lalu dirapikan supaya tidak keluar frame.
 - [x] Bumper 3: tulisan Saduli Ragap, tulisan sambung di bawahnya, dan prop di sekitarnya dikecilkan sedikit di ketiga ukuran.
+- [x] Bumper 3: ukuran landscape 4:3 dihapus supaya fokus ke 3:2; 3:2 jadi ukuran default, portrait 3:4 tetap ada.
