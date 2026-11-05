@@ -7,24 +7,30 @@
 >
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
-
-## What Lovable manages
-
-Rules outside this block are the project's own. Change the pieces below in
-Lovable, not by hand. With the [Lovable MCP](https://mcp.lovable.dev)
-connected, `send_message` asks Lovable to do it; otherwise ask the user to
-use the editor.
-
-- **Database.** Do not add or edit `supabase/migrations/` or `drizzle/`.
-  Ask Lovable to change the schema.
-- **Generated files.** Do not edit a file whose header says it is automatically
-  generated.
-- **AI gateway.** Keep model calls on Lovable's gateway, and keep
-  `LOVABLE_API_KEY` out of browser code.
-- **Connectors.** Lovable provides native connectors. `list_connectors` shows
-  which are enabled; `add_connector` only returns the dashboard link. When a
-  connector is enabled, calls go through the connector gateway and need
-  `LOVABLE_API_KEY`. When Lovable does not provide one, users can bring their
-  own key and store it in Secrets.
-- **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Architecture rules
+- MusiComedy's opening bumper lives in its own feed tab with a 4:3 landscape animated stage (ending on a menu-ordering message) and a pre-rendered MP4 download; why: event playback and export must match without changing existing slides.
+- Bumper 2 lives in `NempoLogoOpening` with its own `nlo-` styles, separate transparent tagline images, a 12 s CSS timeline shared with a synthesized gamelan track in `public/audio/`, and a prerecorded MP4 with that audio; why: each phrase must animate independently, audio uses public URLs, and playback and download must stay in sync.
+- The bumper shows the NEMPO logo and the date/venue footer only in the opening segment and never uses dancer silhouettes; why: the owner asked both to be opening-only/removed, and the stage stays clean for the performers segment.
+- Some subdirectories have their own `AGENTS.md` (`src/assets/`, `src/data/`, `src/apps/`, `src/apps/cms/`, `drizzle/`); read the nearest one before changing files there; why: those rules are scoped to that folder and keep this file short.
+- Event saweran uses the original uploaded QRIS asset in EventSaweran, scoped to MusiComedy Night, with same-origin download and enlargement; why: preserve payment-code integrity without implying automatic payment verification.
+- EventLocation renders provided map embeds with browser-safe venue destinations in event-location data; why: supplied venue links remain reproducible after remix without a new map provider.
+- Event sharing uses EventShare with native device sharing and explicit web destinations as fallback; why: sharing remains usable when the browser has no system share sheet.
+- Good Story Cafe reservations use the browser-safe cafe layout module for table identities, messages and their event-specific WhatsApp contact, with a locally scoped tool palette; why: event reservations must not change general service contacts or other event themes.
+- Security headers are applied in Start request middleware; production sourcemaps are disabled; why: block hostile embedding and content sniffing without blocking accessibility or DevTools.
+- Public news reads use explicit non-contact columns and database column grants; site settings are private; backup exports fail closed until verified server-side administrator authorization exists; why: the imported app has no real administrator authentication and client-side gates cannot protect private data.
+- Main-site API requests use the root-relative `/api` prefix; event ticket reads resolve the event slug or id before querying its tickets; why: inherited parent-directory URLs can fail in previews and tickets are keyed by numeric event id.
+- MusiComedy slide variants share the frame component through a mode prop: slide 31 shows the performers, slide 32 the scoped cafe animation (respecting reduced motion), slides 33 and 34 neither; slide 33 keeps SlideThirtyThreeReminder (JSX phone mockup and reminder callouts) and slide 34 has its own song-request content in SlideThirtyFourSongRequest (rentetan list lagu + WhatsApp call to action); why: the owner turned slide 34 into the request-a-song slide while slide 33 must stay unchanged.
+- The NEMPO site (migrated from Replit repo nempocreative/organizer, artifact nempo-garut-web) renders client-only through `src/components/nempo-shell.tsx`, mounted by `src/routes/index.tsx` and the catch-all `src/routes/$.tsx`; why: its 100+ pages rely on browser APIs and were ported as-is.
+- Page-level routing inside the NEMPO app goes through `src/lib/wouter.tsx`, a wouter-compatible API backed by TanStack Router; why: keeps one router without rewriting every page. New pages are added to the `Switch` in `src/nempo-app.tsx`.
+- tsconfig strict extras (noUncheckedIndexedAccess, exactOptionalPropertyTypes, etc.) are off; why: the imported code was written without them.
+- Full-data JSON backup: `src/lib/backup.ts` lists every database table (a type check fails if a table is missing), `/api/backup` serves the file, and `/backup` is the download page; why: one source for "everything" so new tables can't silently drop out of backups.
+- Lazily loaded pages and apps use `lazyWithRetry` from `src/lib/lazy-with-retry.ts` instead of React `lazy`; why: a page file that fails to load after an update otherwise blanks the whole screen — it retries once, then reloads once.
+- Nempo Feed slides 32, 33 and 34 each have a downloadable prebuilt MP4 (1080×1440, 30 fps, 30 s) shipped as a pointer in `src/assets/`; slides 33 and 34's videos are recorded from the live preview with CSS animations time-stepped via `document.getAnimations()` (900 frames, deterministic 30 fps) and also keep their real files next to the pointers since they are under 10 MB; why: the CSS animations must export at preview fidelity, and slide 32's file exceeds the repo's 10 MB limit so it stays pointer-only.
+- The JSON API camelizes column names, so pages whose data types are snake_case must normalize each response with `toSnake` from `src/lib/api-keys.ts`; why: otherwise multi-word columns (guest stars, sale windows, payment info) arrive under different names and silently render nothing.
+- One-shot database writes (re-applying seed rows) run through `psql` on the sandbox's database connection with SQL generated from the in-repo source files; why: a new file under `src/routes/` is only registered when the dev server restarts, so a temporary API endpoint never runs.
+- After a remix, the migration set under `drizzle/migrations/` restarts empty and the new project's existing database tables are the baseline; why: a migration copied from the source project re-runs against tables that already exist and blocks every later schema change.
+- Repository completeness is guarded by `src/lib/repo-completeness.test.ts`: every media pointer must be tracked and belong to this project's own storage, no needed file may be git-ignored, and no tracked file may reach 10 MB; why: git sync pushes tracked files only, so an ignored, untracked, oversized, or foreign-project pointer silently disappears after a clone or a remix.
+- Scope of this project: the NEMPO main site, the `/cms` back-office and the `/nempo-feed` app were migrated from nempocreative/nempo-34; the admin-panel, mou and tion apps were intentionally left out; why: the owner asked for the organizer site, its CMS and later Nempo Feed only.
+- Visitor inspection is deterred by `src/lib/inspect-guard.ts` (right-click, DevTools/view-source/save-page keys, photo dragging), mounted once in `src/routes/__root.tsx` and active on every host including the Lovable preview; why: the owner asked for the site not to be inspectable, and this layer must stay a deterrent — anything secret still belongs server-side, never in client code.

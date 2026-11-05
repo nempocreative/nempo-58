@@ -1,0 +1,8 @@
+[
+  {"capability":"code, pages, assets","source":"github nempocreative/nempo-42","outcome":"migrate","status":"done","next_action":"none"},
+  {"capability":"media pointers (50) re-uploaded to this project's storage","source":"previous project storage","outcome":"migrate","status":"done","next_action":"none"},
+  {"capability":"schema (21 tables, has_role, access rules)","source":"types.ts","outcome":"migrate","status":"done","next_action":"none"},
+  {"capability":"email/password sign-in for /cms","source":"previous auth","outcome":"migrate","status":"done","next_action":"none"},
+  {"capability":"records","source":"previous Lovable Cloud database (nempo-42)","outcome":"migrate","status":"pending","next_action":"user exports data from the old project (More → Database → Manage → Settings → Export data, or /backup) and attaches it"},
+  {"capability":"admin users / user_roles","source":"previous auth","outcome":"migrate","status":"pending","next_action":"user provides admin email; create account and admin role"}
+]
