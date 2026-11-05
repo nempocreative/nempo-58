@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Pause, Play, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import stage from '@/assets/dangdut-halloween-stage.jpg';
-import showLogo from '@/assets/saduli-dangdut-halloween-logo-transparent.png';
 import srLogo from '@/assets/saduli-ragap-entertainment-logo-keyed.png';
 
 type Ratio = 'landscape' | 'portrait';
@@ -31,14 +30,28 @@ export function DangdutHalloweenBumper() {
         <img className="ddh-bg" src={stage} alt="" aria-hidden="true" />
         <div className="ddh-tint" aria-hidden="true" />
         <div className="ddh-beams" aria-hidden="true"><i /><i /><i /><i /></div>
-        <div className="ddh-bats" aria-hidden="true">{Array.from({ length: 7 }, (_, i) => <i key={i} style={{ ['--i' as string]: i }}>🦇</i>)}</div>
-        <div className="ddh-sparks" aria-hidden="true">{Array.from({ length: 18 }, (_, i) => <i key={i} style={{ ['--i' as string]: i }} />)}</div>
+        <div className="ddh-bats" aria-hidden="true">
+          {Array.from({ length: 5 }, (_, i) => (
+            <svg key={i} viewBox="0 0 64 28" style={{ ['--i' as string]: i }}>
+              <path d="M32 9c-1.6-3-3.6-4-3.6-4l.6 4.4c-4-3.8-12-6-19-3.4 3.2 1.4 5 3.6 5.4 6.4C10.8 11 5 11.8 0 16c5.4-.4 9.6 1 12 3.6 3-2.4 7.6-3 11.2-1.2 3 1.4 5.6 4.6 8.8 9.6 3.2-5 5.8-8.2 8.8-9.6 3.6-1.8 8.2-1.2 11.2 1.2 2.4-2.6 6.6-4 12-3.6-5-4.2-10.8-5-15.4-3.6.4-2.8 2.2-5 5.4-6.4-7-2.6-15-.4-19 3.4l.6-4.4S33.6 6 32 9Z" />
+            </svg>
+          ))}
+        </div>
         <div className="ddh-flash" aria-hidden="true" />
         <div className="ddh-presents">
           <img src={srLogo} alt="Saduli Ragap Entertainment" />
         </div>
         <div className="ddh-stack">
-          <img className="ddh-logo" src={showLogo} alt="Saduli Ragap — Dangdut Halloween Night" />
+          <div className="ddh-mark" role="img" aria-label="Saduli Ragap — Dangdut Halloween Night">
+            {['SADULI', 'RAGAP'].map((word) => (
+              <span key={word} className="ddh-word" aria-hidden="true">
+                <span className="ddh-word-back">{word}</span>
+                <span className="ddh-word-line">{word}</span>
+                <span className="ddh-word-face">{word}</span>
+              </span>
+            ))}
+            <span className="ddh-sub" aria-hidden="true">Dangdut Halloween Night</span>
+          </div>
         </div>
         <div className="ddh-fog" aria-hidden="true" />
         <div className="ddh-fade" aria-hidden="true" />

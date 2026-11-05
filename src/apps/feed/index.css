@@ -1868,6 +1868,9 @@
   --ddh-gold: oklch(0.88 0.17 90);
   --ddh-night: oklch(0.16 0.08 300);
   --ddh-ink: oklch(0.99 0 0);
+  --ddh-plum: oklch(0.2 0.07 320);
+  --ddh-cream: oklch(0.97 0.05 95);
+  --ddh-amber: oklch(0.7 0.17 60);
   --ddh-t: 14s;
   position: relative; overflow: hidden; margin: 0 auto; width: min(100%, 960px);
   background: var(--ddh-night); border-radius: 12px; container-type: inline-size;
@@ -1884,17 +1887,31 @@
 .ddh-beams i:nth-child(2) { --n: 1; background: linear-gradient(to bottom, color-mix(in oklab, var(--ddh-orange) 55%, transparent), transparent 80%); animation-delay: -0.6s; }
 .ddh-beams i:nth-child(3) { --n: 2; animation-delay: -1.2s; }
 .ddh-beams i:nth-child(4) { --n: 3; background: linear-gradient(to bottom, color-mix(in oklab, var(--ddh-orange) 55%, transparent), transparent 80%); animation-delay: -1.8s; }
-.ddh-bats i { position: absolute; font-size: 5cqw; left: -10%; top: calc(8% + var(--i) * 9%); filter: brightness(0.2) drop-shadow(0 0 6px var(--ddh-orange));
-  animation: ddh-bat 6s linear infinite; animation-delay: calc(var(--i) * -0.9s); }
-.ddh-sparks i { position: absolute; width: 1cqw; height: 1cqw; border-radius: 50%; background: var(--ddh-gold); box-shadow: 0 0 2cqw var(--ddh-gold);
-  left: calc(5% + var(--i) * 5.2%); bottom: -5%; opacity: 0; animation: ddh-rise 3s ease-out infinite; animation-delay: calc(var(--i) * -0.37s); }
+.ddh-bats svg { position: absolute; width: 6cqw; left: -10%; top: calc(7% + var(--i) * 11%); fill: oklch(0.12 0.04 300);
+  filter: drop-shadow(0 0 .6cqw color-mix(in oklab, var(--ddh-orange) 60%, transparent));
+  animation: ddh-bat 7s linear infinite; animation-delay: calc(var(--i) * -1.4s); }
+.ddh-bats svg:nth-child(even) { width: 4cqw; }
 .ddh-flash { position: absolute; inset: 0; background: var(--ddh-ink); opacity: 0; animation-name: ddh-flash; }
 .ddh-presents { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 2cqw; opacity: 0; animation-name: ddh-presents; }
 .ddh-presents img { width: 38cqw; filter: drop-shadow(0 0 2.5cqw color-mix(in oklab, var(--ddh-gold) 55%, transparent)); }
 .ddh-stack { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 3cqw; }
-.ddh-logo { position: relative; width: 84%; opacity: 0; will-change: transform, opacity;
-  filter: drop-shadow(0 0 3cqw color-mix(in oklab, var(--ddh-pink) 70%, transparent)); animation-name: ddh-logo; }
-.ddh-portrait .ddh-logo { width: 96%; }
+.ddh-mark { position: relative; display: grid; justify-items: center; opacity: 0; will-change: transform, opacity;
+  rotate: -5deg; animation-name: ddh-logo; }
+.ddh-word { display: grid; font-family: 'Shrikhand', serif; font-size: 15.5cqw; line-height: .86; letter-spacing: .01em; }
+.ddh-word + .ddh-word { margin-top: -.5cqw; translate: 3cqw 0; }
+.ddh-portrait .ddh-word { font-size: 21cqw; }
+.ddh-word > span { grid-area: 1 / 1; }
+.ddh-word-back { color: var(--ddh-plum); -webkit-text-stroke: 3.4cqw var(--ddh-plum);
+  text-shadow: 0 .5cqw 0 var(--ddh-plum), 0 1cqw 0 var(--ddh-plum), 0 1.5cqw 0 var(--ddh-plum), 0 2cqw 0 var(--ddh-plum),
+    0 3cqw 2.5cqw color-mix(in oklab, black 70%, transparent); }
+.ddh-word-line { color: var(--ddh-orange); -webkit-text-stroke: 1.6cqw var(--ddh-orange); }
+.ddh-word-face { color: transparent; -webkit-text-stroke: .35cqw var(--ddh-plum);
+  background: linear-gradient(180deg, var(--ddh-cream) 0%, var(--ddh-gold) 38%, var(--ddh-amber) 52%, var(--ddh-gold) 70%, var(--ddh-cream) 100%);
+  -webkit-background-clip: text; background-clip: text; }
+.ddh-sub { margin-top: 1.4cqw; font-family: 'Yellowtail', cursive; font-size: 7cqw; line-height: 1; color: var(--ddh-cream);
+  -webkit-text-stroke: .9cqw var(--ddh-plum); paint-order: stroke fill; text-shadow: 0 .5cqw 0 var(--ddh-plum);
+  opacity: 0; animation-name: ddh-sub; }
+.ddh-portrait .ddh-sub { font-size: 9cqw; }
 .ddh-fog { position: absolute; left: -20%; right: -20%; bottom: -5%; height: 30%; background: radial-gradient(ellipse at center, color-mix(in oklab, var(--ddh-ink) 25%, transparent), transparent 70%);
   filter: blur(10px); animation: ddh-fog 7s ease-in-out infinite alternate; }
 .ddh-fade { position: absolute; inset: 0; background: var(--ddh-night); animation-name: ddh-fade; }
@@ -1902,7 +1919,6 @@
 @keyframes ddh-zoom { 0% { scale: 1.15; } 100% { scale: 1; } }
 @keyframes ddh-sweep { from { rotate: -22deg; } to { rotate: 22deg; } }
 @keyframes ddh-bat { 0% { translate: 0 0; } 50% { translate: 60cqw -4cqw; } 100% { translate: 130cqw 2cqw; } }
-@keyframes ddh-rise { 0% { opacity: 0; translate: 0 0; } 20% { opacity: 1; } 100% { opacity: 0; translate: 2cqw -90cqw; } }
 @keyframes ddh-fade { 0% { opacity: 1; } 4% { opacity: 0; } 95% { opacity: 0; } 100% { opacity: 1; } }
 @keyframes ddh-presents { 0%, 4% { opacity: 0; scale: .9; } 9%, 22% { opacity: 1; scale: 1; } 26%, 100% { opacity: 0; scale: 1.1; } }
 @keyframes ddh-flash { 0%, 25% { opacity: 0; } 27% { opacity: .55; } 32%, 100% { opacity: 0; } }
@@ -1916,5 +1932,6 @@
   93% { opacity: 1; scale: 1; }
   98%, 100% { opacity: 0; scale: 1.07; }
 }
+@keyframes ddh-sub { 0%, 31% { opacity: 0; translate: 0 2cqw; } 37%, 93% { opacity: 1; translate: 0 0; } 98%, 100% { opacity: 0; } }
 @keyframes ddh-fog { from { translate: -5% 0; } to { translate: 5% 0; } }
-@media (prefers-reduced-motion: reduce) { .ddh-stage * { animation: none !important; } .ddh-logo { opacity: 1; scale: 1; } .ddh-fade, .ddh-presents, .ddh-flash { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .ddh-stage * { animation: none !important; } .ddh-mark, .ddh-sub { opacity: 1; scale: 1; } .ddh-fade, .ddh-presents, .ddh-flash { opacity: 0; } }
