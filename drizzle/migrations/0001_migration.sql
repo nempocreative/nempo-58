@@ -1,0 +1,3 @@
+insert into public.events (slug, name, title, category, date, time_start, time_end, location, description, organizer, price, guest_stars, image, banner_image, active, featured, crew_active, allow_voucher, service_fee_percent, visitors)
+select 'musicomedy-night', 'MusiComedy Night', 'MusiComedy Night', 'Musik', '2026-11-04', '15:00', '23:00', 'Good Story Cafe, Jl. Sudirman Copong No. 11, Garut', 'Malam musik dan komedi bareng NEMPO.ID × Kala Muda di Good Story Cafe.', 'NEMPO.ID × Kala Muda', 0, '[{"name":"Saduli Ragap","role":"Bintang Tamu"}]'::jsonb, '/images/events/musicomedy-night-poster.webp', '/images/events/musicomedy-night-poster.webp', true, true, false, false, 0, 0
+where not exists (select 1 from public.events where slug = 'musicomedy-night');
