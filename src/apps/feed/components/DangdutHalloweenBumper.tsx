@@ -3,6 +3,9 @@ import { Pause, Play, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import stage from '@/assets/dangdut-halloween-stage.jpg';
 import srLogo from '@/assets/saduli-ragap-entertainment-logo-keyed.png';
+import pumpkin from '@/assets/ddh-pumpkin.png';
+import bat from '@/assets/ddh-bat.png';
+import kendang from '@/assets/ddh-kendang.png';
 
 type Ratio = 'landscape' | 'portrait';
 
@@ -43,9 +46,11 @@ export function DangdutHalloweenBumper() {
         </div>
         <div className="ddh-stack">
           <div className="ddh-mark" role="img" aria-label="Saduli Ragap — Dangdut Halloween Night">
+            <img className="ddh-prop ddh-prop-pumpkin" src={pumpkin} alt="" aria-hidden="true" />
+            <img className="ddh-prop ddh-prop-bat" src={bat} alt="" aria-hidden="true" />
+            <img className="ddh-prop ddh-prop-kendang" src={kendang} alt="" aria-hidden="true" />
             {['SADULI', 'RAGAP'].map((word) => (
               <span key={word} className="ddh-word" aria-hidden="true">
-                <span className="ddh-word-back">{word}</span>
                 <span className="ddh-word-line">{word}</span>
                 <span className="ddh-word-face">{word}</span>
               </span>
