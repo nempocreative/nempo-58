@@ -1876,6 +1876,7 @@
   background: var(--ddh-night); border-radius: 12px; container-type: inline-size;
 }
 .ddh-landscape { aspect-ratio: 4 / 3; }
+.ddh-wide { aspect-ratio: 3 / 2; }
 .ddh-portrait { aspect-ratio: 3 / 4; width: min(100%, 640px); }
 .ddh-stage * { animation-duration: var(--ddh-t); animation-iteration-count: infinite; animation-timing-function: ease-in-out; }
 .ddh-stage.is-paused * { animation-play-state: paused; }
