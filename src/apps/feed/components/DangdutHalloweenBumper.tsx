@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { Pause, Play, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import stage from '@/assets/dangdut-halloween-stage.jpg';
-import showLogo from '@/assets/saduli-dangdut-halloween-logo.png';
-import srAsset from '@/assets/saduli-ragap-entertainment-logo.jpg.asset.json';
+import showLogo from '@/assets/saduli-dangdut-halloween-logo-transparent.png';
+import srLogo from '@/assets/saduli-ragap-entertainment-logo-keyed.png';
 
 type Ratio = 'landscape' | 'portrait';
 
@@ -35,8 +35,7 @@ export function DangdutHalloweenBumper() {
         <div className="ddh-sparks" aria-hidden="true">{Array.from({ length: 18 }, (_, i) => <i key={i} style={{ ['--i' as string]: i }} />)}</div>
         <div className="ddh-flash" aria-hidden="true" />
         <div className="ddh-presents">
-          <img src={srAsset.url} alt="Saduli Ragap Entertainment" />
-          <span>mempersembahkan</span>
+          <img src={srLogo} alt="Saduli Ragap Entertainment" />
         </div>
         <img className="ddh-logo" src={showLogo} alt="Saduli Ragap — Dangdut Halloween Night" />
         <div className="ddh-line ddh-line-1">Goyang Seram</div>
