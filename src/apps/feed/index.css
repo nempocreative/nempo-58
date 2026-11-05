@@ -1860,3 +1860,68 @@
   .s34-wa::after { animation: none; }
 }
 
+
+/* ===== Bumper 3: Dangdut Halloween (ddh-) — 14 s loop ===== */
+.ddh-stage {
+  --ddh-orange: oklch(0.74 0.19 55);
+  --ddh-pink: oklch(0.68 0.27 340);
+  --ddh-gold: oklch(0.88 0.17 90);
+  --ddh-night: oklch(0.16 0.08 300);
+  --ddh-ink: oklch(0.99 0 0);
+  --ddh-t: 14s;
+  position: relative; overflow: hidden; margin: 0 auto; width: min(100%, 960px);
+  background: var(--ddh-night); border-radius: 12px; container-type: inline-size;
+}
+.ddh-landscape { aspect-ratio: 4 / 3; }
+.ddh-portrait { aspect-ratio: 3 / 4; width: min(100%, 640px); }
+.ddh-stage * { animation-duration: var(--ddh-t); animation-iteration-count: infinite; animation-timing-function: ease-in-out; }
+.ddh-stage.is-paused * { animation-play-state: paused; }
+.ddh-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation-name: ddh-zoom; }
+.ddh-tint { position: absolute; inset: 0; background: radial-gradient(circle at 50% 45%, transparent 20%, color-mix(in oklab, var(--ddh-night) 85%, transparent) 90%); }
+.ddh-beams i { position: absolute; top: -10%; width: 14%; height: 120%; left: calc(10% + var(--n, 0) * 25%);
+  background: linear-gradient(to bottom, color-mix(in oklab, var(--ddh-pink) 55%, transparent), transparent 80%);
+  transform-origin: top center; mix-blend-mode: screen; filter: blur(6px); animation: ddh-sweep 2.4s ease-in-out infinite alternate; }
+.ddh-beams i:nth-child(2) { --n: 1; background: linear-gradient(to bottom, color-mix(in oklab, var(--ddh-orange) 55%, transparent), transparent 80%); animation-delay: -0.6s; }
+.ddh-beams i:nth-child(3) { --n: 2; animation-delay: -1.2s; }
+.ddh-beams i:nth-child(4) { --n: 3; background: linear-gradient(to bottom, color-mix(in oklab, var(--ddh-orange) 55%, transparent), transparent 80%); animation-delay: -1.8s; }
+.ddh-bats i { position: absolute; font-size: 5cqw; left: -10%; top: calc(8% + var(--i) * 9%); filter: brightness(0.2) drop-shadow(0 0 6px var(--ddh-orange));
+  animation: ddh-bat 6s linear infinite; animation-delay: calc(var(--i) * -0.9s); }
+.ddh-sparks i { position: absolute; width: 1cqw; height: 1cqw; border-radius: 50%; background: var(--ddh-gold); box-shadow: 0 0 2cqw var(--ddh-gold);
+  left: calc(5% + var(--i) * 5.2%); bottom: -5%; opacity: 0; animation: ddh-rise 3s ease-out infinite; animation-delay: calc(var(--i) * -0.37s); }
+.ddh-flash { position: absolute; inset: 0; background: var(--ddh-ink); opacity: 0; animation-name: ddh-flash; }
+.ddh-presents { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 2cqw; opacity: 0; animation-name: ddh-presents; }
+.ddh-presents img { width: 38cqw; border-radius: 3cqw; mix-blend-mode: lighten; }
+.ddh-presents span { color: var(--ddh-gold); font: italic 600 3.4cqw/1 Georgia, serif; letter-spacing: .3em; text-transform: uppercase; }
+.ddh-logo { position: absolute; left: 50%; top: 44%; width: 84%; translate: -50% -50%; opacity: 0;
+  filter: drop-shadow(0 0 3cqw color-mix(in oklab, var(--ddh-pink) 70%, transparent)); animation-name: ddh-logo; }
+.ddh-portrait .ddh-logo { width: 96%; top: 40%; }
+.ddh-line { position: absolute; left: 0; right: 0; text-align: center; font: 900 italic 9cqw/1 'Arial Black', Impact, sans-serif; color: var(--ddh-gold);
+  -webkit-text-stroke: .5cqw var(--ddh-pink); text-shadow: 0 0 3cqw var(--ddh-orange), .6cqw .6cqw 0 var(--ddh-night); opacity: 0; }
+.ddh-line-1 { top: 74%; animation-name: ddh-line1; }
+.ddh-line-2 { top: 74%; color: var(--ddh-orange); -webkit-text-stroke-color: var(--ddh-gold); animation-name: ddh-line2; }
+.ddh-portrait .ddh-line { font-size: 11cqw; top: 72%; }
+.ddh-fog { position: absolute; left: -20%; right: -20%; bottom: -5%; height: 30%; background: radial-gradient(ellipse at center, color-mix(in oklab, var(--ddh-ink) 25%, transparent), transparent 70%);
+  filter: blur(10px); animation: ddh-fog 7s ease-in-out infinite alternate; }
+.ddh-fade { position: absolute; inset: 0; background: var(--ddh-night); animation-name: ddh-fade; }
+
+@keyframes ddh-zoom { 0% { scale: 1.15; } 100% { scale: 1; } }
+@keyframes ddh-sweep { from { rotate: -22deg; } to { rotate: 22deg; } }
+@keyframes ddh-bat { 0% { translate: 0 0; } 50% { translate: 60cqw -4cqw; } 100% { translate: 130cqw 2cqw; } }
+@keyframes ddh-rise { 0% { opacity: 0; translate: 0 0; } 20% { opacity: 1; } 100% { opacity: 0; translate: 2cqw -90cqw; } }
+@keyframes ddh-fade { 0% { opacity: 1; } 4% { opacity: 0; } 95% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes ddh-presents { 0%, 4% { opacity: 0; scale: .9; } 9%, 22% { opacity: 1; scale: 1; } 26%, 100% { opacity: 0; scale: 1.1; } }
+@keyframes ddh-flash { 0%, 25% { opacity: 0; } 26.5% { opacity: .9; } 30%, 100% { opacity: 0; } }
+@keyframes ddh-logo {
+  0%, 25% { opacity: 0; scale: .2; rotate: -12deg; }
+  29% { opacity: 1; scale: 1.12; rotate: 3deg; }
+  32% { scale: .96; rotate: -1deg; }
+  35% { scale: 1; rotate: 0deg; }
+  40%, 50%, 60%, 70%, 80%, 90% { scale: 1.04; }
+  45%, 55%, 65%, 75%, 85% { scale: 1; }
+  93% { opacity: 1; scale: 1; }
+  98%, 100% { opacity: 0; scale: 1.3; }
+}
+@keyframes ddh-line1 { 0%, 40% { opacity: 0; translate: -60% 0; } 44%, 60% { opacity: 1; translate: 0 0; rotate: -3deg; } 64%, 100% { opacity: 0; translate: 60% 0; } }
+@keyframes ddh-line2 { 0%, 64% { opacity: 0; scale: 3; } 68% { opacity: 1; scale: .95; } 70%, 92% { opacity: 1; scale: 1; rotate: 2deg; } 96%, 100% { opacity: 0; } }
+@keyframes ddh-fog { from { translate: -5% 0; } to { translate: 5% 0; } }
+@media (prefers-reduced-motion: reduce) { .ddh-stage * { animation: none !important; } .ddh-logo { opacity: 1; scale: 1; } .ddh-fade, .ddh-presents, .ddh-flash { opacity: 0; } }
