@@ -3,7 +3,6 @@ import slide32VideoAsset from '@/assets/nempo-feed-slide-32.mp4.asset.json';
 import slide33VideoAsset from '@/assets/nempo-feed-slide-33.mp4.asset.json';
 import slide34VideoAsset from '@/assets/nempo-feed-slide-34.mp4.asset.json';
 import ggsRatusVideo from '@/assets/ggs-feed-07-ratus-hq.mp4.asset.json';
-import ggsRatusEquipmentVideo from '@/assets/ggs-feed-08-ratus-final.mp4.asset.json';
 import {
   FaFileExcel,
   FaFileWord,
@@ -85,6 +84,7 @@ import { GgsQCardCover } from './components/GgsQCardCover';
 import { GgsBeautyPhotobooth } from './components/GgsBeautyPhotobooth';
 import { GgsMemberCardDesigner } from './components/GgsMemberCardDesigner';
 import { Ggs2027Calendar } from './components/Ggs2027Calendar';
+import { GgsRatusBenefitSlide } from './components/GgsRatusBenefitSlide';
 import { GgsRatusPromoSlide } from './components/GgsRatusPromoSlide';
 
 const SpreadsheetViewer = lazy(async () => {
@@ -2637,8 +2637,12 @@ function ClientFeedArtwork({
     return <GgsBeautyContentSlide slide={slide} exportRef={exportRef} />;
   }
 
-  if (!isStory && (slide === 7 || slide === 8)) {
-    return <GgsRatusPromoSlide key={slide} exportRef={exportRef} subject={slide === 8 ? 'equipment' : 'client'} />;
+  if (!isStory && slide === 8) {
+    return <GgsRatusBenefitSlide exportRef={exportRef} />;
+  }
+
+  if (!isStory && slide === 7) {
+    return <GgsRatusPromoSlide key={slide} exportRef={exportRef} subject="client" />;
   }
 
   if (!isStory && (slide === 4 || slide === 5 || slide === 6)) {
@@ -2692,7 +2696,7 @@ function App() {
   const isGgsGrandOpeningSlide =
     activeFeed === 'client' && activeClientSlide === 3;
   const isGgsRatusVideoSlide =
-    activeFeed === 'client' && (activeClientSlide === 7 || activeClientSlide === 8);
+    activeFeed === 'client' && activeClientSlide === 7;
 
   useEffect(() => {
     if (
@@ -3156,7 +3160,7 @@ function App() {
             {isGgsRatusVideoSlide ? (
               <>
                 <a
-                  href={activeClientSlide === 8 ? ggsRatusEquipmentVideo.url : ggsRatusVideo.url}
+                  href={ggsRatusVideo.url}
                   download={`GGS-Feed-0${activeClientSlide}-Promo-Ratus.mp4`}
                   className="inline-flex items-center gap-2 rounded-full bg-[#062f4d] px-4 py-2 text-[11px] font-black text-white shadow-[0_8px_20px_rgba(0,40,78,0.2)] transition-colors hover:bg-[#0b4d69] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffdd00] focus-visible:ring-offset-2"
                 >
