@@ -1,5 +1,7 @@
 # Roadmap
 
+- [ ] GGS slide 7: tingkatkan kualitas MP4 dari frame asli 1080×1440, periksa ketajaman dan unduhan seperti NEMPO slide 34.
+
 - [x] GGS slide 7: foto AI dengan tungku ratus dan tipografi rapi tanpa brush/outline; slide 8 fokus alat ratus; watermark asli tetap, kedua MP4 1080×1440 15 detik 30 fps dan unduhan terverifikasi.
 
 - [x] GGS slide 7: watermark header/footer asli terpasang, desain AI diperiksa di komputer/ponsel, MP4 1080×1440 15 detik 30 fps diperbarui dan tombol unduh cocok dengan file baru.
