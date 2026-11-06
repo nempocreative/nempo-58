@@ -1,10 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type MouseEvent } from 'react';
 import { Download } from 'lucide-react';
+
+function isAppleTouchDevice() {
+  return (
+    /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
+  );
+}
 
 /**
  * Download button for a prebuilt PNG. The file is fetched into memory as soon
- * as the slide is shown, so a tap saves it instantly through a same-origin
- * blob link (the same way the other feed downloads work).
+ * as the slide is shown. On computers a tap saves it through a same-origin
+ * blob link; on iPad/iPhone it opens the share sheet ("Simpan Gambar" /
+ * "Simpan ke File"), falling back to opening the picture in a new tab.
  */
 export function PrebuiltPngDownload({
   src,
@@ -17,6 +25,7 @@ export function PrebuiltPngDownload({
   label: string;
   className?: string;
 }) {
+  const [blob, setBlob] = useState<Blob | null>(null);
   const [blobUrl, setBlobUrl] = useState<string | null>(null);
 
   useEffect(() => {
@@ -27,9 +36,11 @@ export function PrebuiltPngDownload({
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.blob();
       })
-      .then((blob) => {
+      .then((data) => {
         if (cancelled) return;
-        url = URL.createObjectURL(new Blob([blob], { type: 'image/png' }));
+        const png = new Blob([data], { type: 'image/png' });
+        url = URL.createObjectURL(png);
+        setBlob(png);
         setBlobUrl(url);
       })
       .catch(() => {
@@ -41,10 +52,27 @@ export function PrebuiltPngDownload({
     };
   }, [src]);
 
+  const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (!isAppleTouchDevice()) return; // normal download on computers
+    event.preventDefault();
+    const openInTab = () => window.open(src, '_blank', 'noopener');
+    if (blob) {
+      const file = new File([blob], fileName, { type: 'image/png' });
+      if (navigator.canShare?.({ files: [file] })) {
+        navigator.share({ files: [file], title: fileName }).catch((error: DOMException) => {
+          if (error?.name !== 'AbortError') openInTab();
+        });
+        return;
+      }
+    }
+    openInTab();
+  };
+
   return (
     <a
       href={blobUrl ?? src}
       download={fileName}
+      onClick={handleClick}
       className={className}
       data-ready={blobUrl ? 'true' : 'false'}
     >
