@@ -54,7 +54,6 @@ function VestSpinner({ frames, name }: { frames: string[]; name: string }) {
     const render = () => {
       const p = ((pos.current % n) + n) % n;
       const a = Math.floor(p) % n;
-      const b = (a + 1) % n;
       const f = p - Math.floor(p);
       // Hanya satu foto yang tampil (tanpa memudar), jadi tidak ada bayangan dobel.
       // Di antara dua sudut, foto itu sendiri ikut berputar searah putaran rompi
