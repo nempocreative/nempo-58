@@ -1,5 +1,7 @@
 # Roadmap
 
+- [ ] GGS slide 7: gunakan watermark header/footer kiriman pemilik, periksa desain AI dan perbarui MP4 1080×1440.
+
 ## Selesai
 - [x] MusiComedy Night dipulihkan setelah remix: aktif di database; klik Event Mendatang, daftar event dan detail diverifikasi langsung.
 - [x] Poster Event Mendatang: hilangkan animasi yang mengaburkan tulisan dan sediakan WebP sesuai ukuran layar tanpa menunda pemuatan.
