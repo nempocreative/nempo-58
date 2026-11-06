@@ -5,7 +5,7 @@
 .ggn-shade{position:absolute;inset:0;background:
   linear-gradient(180deg,rgba(40,10,25,.35) 0%,rgba(40,10,25,0) 14%),
   radial-gradient(ellipse 80% 34% at 22% 26%,rgba(255,236,245,.95) 0%,rgba(255,236,245,.82) 45%,rgba(255,236,245,0) 100%)}
-.ggn-copy{position:absolute;z-index:2;left:7cqw;top:21cqw;width:66cqw}
+.ggn-copy{position:absolute;z-index:2;left:7cqw;top:23cqw;width:66cqw}
 .ggn-kicker{margin:0;display:flex;align-items:center;gap:2cqw;font-size:2.8cqw;font-weight:700;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
 .ggn-flag{flex:none;width:5.5cqw;height:3.6cqw;border-radius:.6cqw;background:linear-gradient(180deg,#d7192f 50%,#fff 50%);box-shadow:0 0 0 .25cqw rgba(74,14,51,.25)}
 .ggn-title{margin:1.4cqw 0 0;font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:9cqw;line-height:1.02;color:#c2186b}
