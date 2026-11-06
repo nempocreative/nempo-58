@@ -11,9 +11,9 @@ const BENEFITS = [
 ];
 
 /** GGS Feed slide 8: static photo slide (no animation) about ratus benefits; exports as PNG. */
-export function GgsRatusBenefitSlide({ exportRef }: { exportRef?: RefObject<HTMLDivElement | null> }) {
+export function GgsRatusBenefitSlide({ exportRef }: { exportRef?: RefObject<HTMLElement | null> }) {
   return (
-    <div ref={exportRef} className="ggb-root">
+    <div ref={exportRef as RefObject<HTMLDivElement | null>} className="ggb-root">
       <img className="ggb-photo" src={ratusScene} alt="Bangku ratus dengan tungku tanah liat" />
       <div className="ggb-shade" />
       <section className="ggb-copy">
