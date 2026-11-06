@@ -1,5 +1,7 @@
 # Roadmap
 
+- [ ] GGS slide 7: hilangkan putih di atas hasil MP4 unduhan dan verifikasi file baru.
+
 - [x] GGS slide 7: MP4 kualitas tinggi dari frame asli 1080×1440, 30 fps, 15 detik; H.264 CRF 16, 5,9 MB; decode dan tombol unduh terverifikasi cocok dengan file baru. Tes kelengkapan: 5 lolos, 1 gagal karena pointer asing lama yang tidak terkait perubahan ini.
 
 - [x] GGS slide 7: foto AI dengan tungku ratus dan tipografi rapi tanpa brush/outline; slide 8 fokus alat ratus; watermark asli tetap, kedua MP4 1080×1440 15 detik 30 fps dan unduhan terverifikasi.
