@@ -32,9 +32,9 @@ const products = [
   },
 ];
 
-const SECONDS_PER_ANGLE = 0.75;
-const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
-const ease = (v: number) => v * v * (3 - 2 * v);
+const SECONDS_PER_ANGLE = 0.5;
+// Kemiringan foto (derajat) di antara dua sudut foto yang berjarak 45°.
+const SWING = 14;
 const LABELS = ["depan", "serong kiri", "samping kiri", "serong belakang", "belakang", "serong belakang", "samping kanan", "serong kanan"];
 
 function VestSpinner({ frames, name }: { frames: string[]; name: string }) {
@@ -54,25 +54,18 @@ function VestSpinner({ frames, name }: { frames: string[]; name: string }) {
     const render = () => {
       const p = ((pos.current % n) + n) % n;
       const a = Math.floor(p) % n;
-      const b = (a + 1) % n;
       const f = p - Math.floor(p);
+      // Hanya satu foto yang tampil (tanpa memudar), jadi tidak ada bayangan dobel.
+      // Di antara dua sudut, foto itu sendiri ikut berputar searah putaran rompi
+      // (dari +SWING ke -SWING), lalu langsung berganti ke sudut berikutnya
+      // sehingga gerakannya terasa seperti benar-benar berputar.
+      const rot = `perspective(1400px) rotateY(${(SWING * (1 - 2 * f)).toFixed(2)}deg)`;
       imgs.current.forEach((el, i) => {
         if (!el) return;
-        let op = 0;
-        let z = "0";
-        if (i === a) {
-          // Sudut sekarang tetap utuh di bawah, jadi tidak ada kedipan/tembus pandang.
-          op = 1;
-          z = "1";
-        } else if (i === b) {
-          // Sudut berikutnya memudar masuk di atas sepanjang hampir seluruh langkah,
-          // tanpa jeda diam, sehingga perpindahan sudut terasa mengalir terus.
-          op = ease(clamp01((f - 0.05) / 0.9));
-          z = "2";
-        }
-        const o = op.toFixed(3);
+        const show = i === a;
+        const o = show ? "1" : "0";
         if (el.style.opacity !== o) el.style.opacity = o;
-        if (el.style.zIndex !== z) el.style.zIndex = z;
+        if (show) el.style.transform = rot;
       });
     };
     const tick = (now: number) => {
@@ -204,7 +197,7 @@ export default function MerchandisePage() {
         .merch-stage:active { cursor: grabbing; }
         .merch-float { position: absolute; inset: 0; animation: merch-float 4s ease-in-out infinite; }
         .merch-float.is-paused, .merch-scene:has(.is-paused) .merch-shadow { animation-play-state: paused; }
-        .merch-face { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; pointer-events: none; will-change: opacity; backface-visibility: hidden; }
+        .merch-face { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; pointer-events: none; will-change: transform; backface-visibility: hidden; }
         .merch-shadow { position: absolute; left: 22%; right: 22%; bottom: 2%; height: 16px; border-radius: 50%; background: rgba(0,0,0,.55); filter: blur(8px); animation: merch-shadow 4s ease-in-out infinite; }
         @keyframes merch-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         @keyframes merch-shadow { 0%,100% { transform: scaleX(1); opacity: .9; } 50% { transform: scaleX(.8); opacity: .55; } }
