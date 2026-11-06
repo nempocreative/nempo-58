@@ -3164,7 +3164,7 @@ function App() {
                   Download video · MP4
                 </a>
                 <p className="max-w-[92vw] text-center text-[10px] font-medium text-slate-600">
-                  Video 15 detik · 1080×1440 · 30 fps, persis seperti pratinjau.
+                  Video {activeClientSlide === 7 ? 20 : 15} detik · 1080×1440 · 30 fps.
                 </p>
               </>
             ) : isNempoFeed && preparedNempoPng?.slide === activeSlide ? (

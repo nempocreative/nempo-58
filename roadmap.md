@@ -1,6 +1,6 @@
 # Roadmap
 
-- [ ] GGS slide 7: hilangkan putih di atas hasil MP4 unduhan dan verifikasi file baru.
+- [ ] GGS slide 7: hilangkan semua pinggiran putih, teks berganti sepanjang 20 detik, rekam ulang MP4 1080×1440 30 fps dan verifikasi unduhan; slide 8 tetap.
 
 - [x] GGS slide 7: MP4 kualitas tinggi dari frame asli 1080×1440, 30 fps, 15 detik; H.264 CRF 16, 5,9 MB; decode dan tombol unduh terverifikasi cocok dengan file baru. Tes kelengkapan: 5 lolos, 1 gagal karena pointer asing lama yang tidak terkait perubahan ini.
 
