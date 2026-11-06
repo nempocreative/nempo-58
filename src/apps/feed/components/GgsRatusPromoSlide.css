@@ -21,6 +21,21 @@
 }
 .ggr-root img { user-select: none; }
 
+/* The portrait keeps the owner's face clear; promo lives over the satin below. */
+.ggr-root--client .ggr-scene img {
+  object-position: center 20%;
+  transform-origin: 50% 38%;
+}
+.ggr-root--client .ggr-veil {
+  background: linear-gradient(to bottom, rgba(255, 228, 240, 0.12) 0%, transparent 45%, rgba(255, 228, 240, 0.4) 64%, rgba(255, 228, 240, 0.92) 90%);
+}
+.ggr-root--client .ggr-copy { inset: 72cqw 0 auto; }
+.ggr-root--client .ggr-title-word { font-size: 13cqw; }
+.ggr-root--client .ggr-promo { font-size: 6cqw; }
+.ggr-root--client .ggr-old { font-size: 4.3cqw; margin-top: 1.8cqw !important; }
+.ggr-root--client .ggr-new { width: 68cqw; }
+.ggr-root--client .ggr-new-num { font-size: 12cqw; }
+
 /* Scene: slow breathing zoom (in and back out within one loop) */
 .ggr-scene { position: absolute; inset: 0; z-index: -3; overflow: hidden; }
 .ggr-scene img {
