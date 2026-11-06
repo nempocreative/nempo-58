@@ -2765,7 +2765,7 @@ function App() {
             ? 1402
             : isGgsStory
               ? 1920
-              : activeFeed === 'nempo'
+              : activeFeed === 'nempo' || (isGgsFeed && activeClientSlide === 8)
                 ? 1440
                 : 1350;
       const renderScale = isHighQualityNempoStorySlide
