@@ -21,6 +21,70 @@
 }
 .ggr-root img { user-select: none; }
 
+/* The portrait keeps the owner's face clear; promo lives over the satin below. */
+.ggr-root--client .ggr-scene img {
+  object-position: center 20%;
+  transform-origin: 50% 38%;
+}
+.ggr-root--client .ggr-veil {
+  background: linear-gradient(to right, rgba(255, 228, 240, 0.28), transparent 68%);
+}
+.ggr-root--client .ggr-copy {
+  inset: auto auto 16cqw 7cqw;
+  width: 55cqw;
+  align-items: flex-start;
+  text-align: left;
+}
+.ggr-root--client .ggr-brush,
+.ggr-root--client .ggr-burst,
+.ggr-root--client .ggr-swash { display: none; }
+.ggr-root--client .ggr-title { order: 1; }
+.ggr-root--client .ggr-title-word {
+  padding: 0;
+  font-family: 'Bodoni Moda', Georgia, serif;
+  font-size: 15cqw;
+  font-style: italic;
+  line-height: 1.05;
+  color: var(--ggr-magenta);
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+}
+.ggr-root--client .ggr-promo {
+  order: 0;
+  margin: 0 0 1.2cqw !important;
+  padding: 0;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 3cqw;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--ggr-plum);
+  text-shadow: none;
+}
+.ggr-root--client .ggr-old {
+  order: 2;
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 3.8cqw;
+  font-weight: 500;
+  margin-top: 2.3cqw !important;
+  text-shadow: none;
+}
+.ggr-root--client .ggr-old-num { font-weight: 500; font-style: normal; }
+.ggr-root--client .ggr-strike { height: 0.3cqw; rotate: 0deg; }
+.ggr-root--client .ggr-new { order: 3; width: auto; padding: 0; margin-top: 1cqw !important; }
+.ggr-root--client .ggr-new-num {
+  font-family: 'DM Sans', Arial, sans-serif;
+  font-size: 10.5cqw;
+  font-weight: 800;
+  font-style: normal;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+  animation: ggr-a-old var(--ggr-t) ease-out infinite;
+}
+.ggr-root--client .ggr-veil {
+  background: linear-gradient(to top, rgba(255, 245, 250, 0.98) 6%, rgba(255, 245, 250, 0.85) 20%, transparent 51%);
+  mask-image: linear-gradient(to right, black 40%, transparent 73%);
+}
+
 /* Scene: slow breathing zoom (in and back out within one loop) */
 .ggr-scene { position: absolute; inset: 0; z-index: -3; overflow: hidden; }
 .ggr-scene img {

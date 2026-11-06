@@ -1,5 +1,6 @@
 import type { RefObject } from 'react';
 import ratusScene from '@/assets/ggs-ratus-scene.jpg';
+import clientPhoto from '@/assets/ggs-ratus-client-spa.jpg';
 import ggsWatermark from '@/assets/ggs-header-footer.png.asset.json';
 import './GgsRatusPromoSlide.css';
 
@@ -33,18 +34,21 @@ function BrushStroke({ className }: { className: string }) {
  */
 export function GgsRatusPromoSlide({
   exportRef,
+  subject = 'client',
 }: {
   exportRef: RefObject<HTMLElement | null>;
+  subject?: 'client' | 'equipment';
 }) {
   return (
     <main
       ref={exportRef}
       aria-label="GGS Beauty — Promo Ratus, dari Rp50.000 jadi Rp45.000"
-      className="ggr-root"
+      className={`ggr-root ggr-root--${subject}`}
     >
       <div className="ggr-scene" aria-hidden="true">
-        <img src={ratusScene} alt="" draggable={false} />
+        <img src={subject === 'client' ? clientPhoto : ratusScene} alt="" draggable={false} />
       </div>
+      {subject === 'equipment' && <>
       <div className="ggr-candle" aria-hidden="true" />
       <div className="ggr-steam" aria-hidden="true">
         <span />
@@ -52,6 +56,7 @@ export function GgsRatusPromoSlide({
         <span />
         <span />
       </div>
+      </>}
       <div className="ggr-veil" aria-hidden="true" />
 
       <section className="ggr-copy">
