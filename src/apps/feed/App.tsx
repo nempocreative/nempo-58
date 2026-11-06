@@ -2,7 +2,7 @@ import gscLogoImage from '@/assets/good-story-cafe-logo.jpg';
 import slide32VideoAsset from '@/assets/nempo-feed-slide-32.mp4.asset.json';
 import slide33VideoAsset from '@/assets/nempo-feed-slide-33.mp4.asset.json';
 import slide34VideoAsset from '@/assets/nempo-feed-slide-34.mp4.asset.json';
-import ggsRatusVideo from '@/assets/ggs-feed-07-ratus.mp4';
+import ggsRatusVideo from '@/assets/ggs-feed-07-ratus-hq.mp4';
 import ggsRatusEquipmentVideo from '@/assets/ggs-feed-08-ratus-final.mp4.asset.json';
 import {
   FaFileExcel,
