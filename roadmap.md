@@ -1,6 +1,6 @@
 # Roadmap
 
-- [ ] GGS slide 7: pakai foto perempuan terbaru dan rapikan promo tanpa menutup wajah; slide 8: alat ratus dengan watermark GGS; perbarui kedua MP4 dan periksa unduhan.
+- [ ] GGS slide 7: perbagus foto perempuan terbaru dengan AI dan tambahkan tungku ratus, promo tanpa menutup wajah; slide 8: alat ratus dengan watermark GGS; perbarui kedua MP4 dan periksa unduhan.
 
 - [x] GGS slide 7: watermark header/footer asli terpasang, desain AI diperiksa di komputer/ponsel, MP4 1080×1440 15 detik 30 fps diperbarui dan tombol unduh cocok dengan file baru.
 
