@@ -92,7 +92,7 @@
 }
 .ggr-box-window {
   width: 100%;
-  height: calc(100% - 6cqw);
+  height: calc(100% - 2.5cqw);
   overflow: hidden;
   border-radius: 28.5cqw 28.5cqw 1.5cqw 1.5cqw;
   background: var(--ggr-soft);
@@ -103,17 +103,6 @@
   object-fit: cover;
   object-position: 50% 12%;
   animation: ggr-kenburns var(--ggr-t) linear infinite;
-}
-.ggr-box-plate {
-  height: 6cqw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--ggr-hot);
-  font-size: 2.4cqw;
-  font-weight: 800;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
 }
 
 /* Ratus stool inset + steam */

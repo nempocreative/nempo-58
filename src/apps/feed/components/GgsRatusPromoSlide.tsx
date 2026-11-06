@@ -39,8 +39,7 @@ export function GgsRatusPromoSlide({
         <div className="ggr-box-window">
           <img src={ratusModel} alt="Pelanggan GGS Beauty memakai kemben satin pink untuk perawatan ratus" draggable={false} />
         </div>
-        <figcaption className="ggr-box-plate">GGS Beauty · Spa</figcaption>
-      </figure>
+              </figure>
 
       <div className="ggr-kursi">
         <div className="ggr-steam" aria-hidden="true">
@@ -78,11 +77,11 @@ export function GgsRatusPromoSlide({
         </p>
       </section>
 
-      <div className="ggr-badge" aria-label="Diskon, hemat Rp5.000">
+      <div className="ggr-badge" aria-label="Diskon 10 persen, hemat Rp5.000">
         <div className="ggr-badge-inner">
           <span className="ggr-badge-top">Diskon</span>
-          <span className="ggr-badge-big">5rb</span>
-          <span className="ggr-badge-bottom">Lebih hemat</span>
+          <span className="ggr-badge-big">10%</span>
+          <span className="ggr-badge-bottom">Hemat 5rb</span>
         </div>
       </div>
 
