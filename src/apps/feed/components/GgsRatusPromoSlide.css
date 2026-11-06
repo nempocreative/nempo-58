@@ -75,20 +75,20 @@
 .ggr-steam span:nth-child(3) { left: 3cqw; animation-delay: -1.5s; }
 .ggr-steam span:nth-child(4) { left: 5cqw; animation-delay: -2.25s; }
 
-.ggr-logo {
+.ggr-watermark {
   position: absolute;
-  left: 4cqw;
-  top: 3.5cqw;
-  width: 11cqw;
-  z-index: 5;
-  filter: drop-shadow(0 0.8cqw 1.6cqw rgba(90, 11, 54, 0.3));
-  animation: ggr-a-logo var(--ggr-t) ease-out infinite;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 6;
+  pointer-events: none;
 }
 
 /* Copy block */
 .ggr-copy {
   position: absolute;
-  inset: 1cqw 0 auto 0;
+  inset: 20cqw 0 auto 0;
   z-index: 4;
   display: flex;
   flex-direction: column;
@@ -103,7 +103,7 @@
   padding: 0 4cqw 1cqw 3cqw;
   font-family: 'Pacifico', 'Yellowtail', cursive;
   font-weight: 400;
-  font-size: 21cqw;
+  font-size: 16cqw;
   line-height: 1.25;
   color: var(--ggr-magenta);
   -webkit-text-stroke: 0.9cqw var(--ggr-cream);
@@ -155,7 +155,7 @@
   margin-top: -2.6cqw !important;
   padding: 0.4cqw 9cqw 1.6cqw;
   font-family: 'Yellowtail', cursive;
-  font-size: 9.5cqw;
+  font-size: 7.5cqw;
   line-height: 1;
   color: var(--ggr-cream);
   text-shadow: 0 0.4cqw 0.8cqw rgba(90, 11, 54, 0.35);
@@ -188,17 +188,17 @@
 
 .ggr-new {
   position: relative;
-  width: 88cqw;
+  width: 76cqw;
   margin-top: 0.4cqw !important;
   padding: 1.6cqw 0 2.6cqw;
 }
 .ggr-brush-new { inset: 0; width: 100%; height: 100%; animation: ggr-a-wipe-new var(--ggr-t) ease-out infinite; }
 .ggr-new-num {
   display: inline-block;
-  font-size: 18cqw;
+  font-size: 14cqw;
   font-weight: 900;
   font-style: italic;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   line-height: 1;
   color: var(--ggr-magenta);
   -webkit-text-stroke: 0.8cqw var(--ggr-cream);

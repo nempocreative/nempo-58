@@ -1,9 +1,7 @@
 import type { RefObject } from 'react';
-import { FaInstagram, FaWhatsapp } from 'react-icons/fa6';
 import ratusScene from '@/assets/ggs-ratus-scene.jpg';
+import ggsWatermark from '@/assets/ggs-header-footer.png.asset.json';
 import './GgsRatusPromoSlide.css';
-
-const assetBase = '/nempo-feed/';
 
 /** Pink paint-brush swipe used behind "Promo" and the new price. */
 function BrushStroke({ className }: { className: string }) {
@@ -56,13 +54,6 @@ export function GgsRatusPromoSlide({
       </div>
       <div className="ggr-veil" aria-hidden="true" />
 
-      <img
-        src={`${assetBase}assets/ggs-beauty-logo.png`}
-        alt="Logo GGS Beauty"
-        className="ggr-logo"
-        draggable={false}
-      />
-
       <section className="ggr-copy">
         <h1 className="ggr-title">
           <span className="ggr-title-word">Ratus</span>
@@ -105,19 +96,12 @@ export function GgsRatusPromoSlide({
         </p>
       </section>
 
-      <footer className="ggr-footer">
-        <div className="ggr-contacts">
-          <span>
-            <FaWhatsapp aria-hidden="true" /> 0823 4277 7723
-          </span>
-          <span>
-            <FaInstagram aria-hidden="true" /> @ggsbeauty.hair.co
-          </span>
-        </div>
-        <a href="https://wa.me/6282342777723" target="_blank" rel="noreferrer" className="ggr-cta">
-          Booking sekarang
-        </a>
-      </footer>
+      <img
+        src={ggsWatermark.url}
+        alt="GGS Beauty Salon & Spa — @ggsbeauty.hair.co — Booking Now — 0823-4277-7723"
+        className="ggr-watermark"
+        draggable={false}
+      />
     </main>
   );
 }
