@@ -4,7 +4,7 @@
 .ggb-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(255,236,245,.94) 0%,rgba(255,236,245,.82) 52%,rgba(255,236,245,0) 78%)}
 .ggb-copy{position:absolute;z-index:2;left:7cqw;top:34cqw;width:62cqw}
 .ggb-kicker{margin:0;font-size:3cqw;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-.ggb-title{margin:.5cqw 0 4cqw;font-family:'Bodoni Moda',serif;font-size:9cqw;line-height:1;color:#c2186b}
+.ggb-title{margin:.5cqw 0 4cqw;font-family:'Playfair Display',Georgia,serif;font-size:9cqw;line-height:1;color:#c2186b}
 .ggb-list{list-style:none;margin:0;padding:0;display:grid;gap:2.4cqw}
 .ggb-list li{display:flex;gap:2.6cqw;align-items:flex-start}
 .ggb-num{flex:none;width:6.5cqw;height:6.5cqw;border-radius:50%;background:#e0338a;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:3.2cqw;line-height:1}
