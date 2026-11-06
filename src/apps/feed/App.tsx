@@ -3,6 +3,7 @@ import slide32VideoAsset from '@/assets/nempo-feed-slide-32.mp4.asset.json';
 import slide33VideoAsset from '@/assets/nempo-feed-slide-33.mp4.asset.json';
 import slide34VideoAsset from '@/assets/nempo-feed-slide-34.mp4.asset.json';
 import ggsRatusVideo from '@/assets/ggs-feed-07-ratus-hq.mp4.asset.json';
+import ggsRatusBenefitPng from '@/assets/ggs-feed-08-ratus-manfaat.png';
 import {
   FaFileExcel,
   FaFileWord,
@@ -3161,6 +3162,20 @@ function App() {
                 </a>
                 <p className="max-w-[92vw] text-center text-[10px] font-medium text-slate-600">
                   Video {activeClientSlide === 7 ? 20 : 15} detik · 1080×1440 · 30 fps.
+                </p>
+              </>
+            ) : activeFeed === 'client' && activeClientSlide === 8 ? (
+              <>
+                <a
+                  href={ggsRatusBenefitPng}
+                  download="GGS-Feed-08-Manfaat-Ratus.png"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#062f4d] px-4 py-2 text-[11px] font-black text-white shadow-[0_8px_20px_rgba(0,40,78,0.2)] transition-colors hover:bg-[#0b4d69] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffdd00] focus-visible:ring-offset-2"
+                >
+                  <Download className="h-3.5 w-3.5" aria-hidden="true" />
+                  Download PNG · 3×
+                </a>
+                <p className="max-w-[92vw] text-center text-[10px] font-medium text-slate-600">
+                  PNG 3240×4320. Di iPhone, jika gambar terbuka, tekan lama lalu pilih Simpan.
                 </p>
               </>
             ) : preparedNempoPng?.key === currentDownloadKey ? (
