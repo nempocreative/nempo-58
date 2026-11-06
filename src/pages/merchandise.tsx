@@ -66,12 +66,12 @@ function VestSpinner({ frames, name }: { frames: string[]; name: string }) {
         if (i === a) {
           // Sudut sekarang: terus memutar pelan, lalu memudar di akhir.
           rot = -f * TILT;
-          op = 1 - ease(clamp01((f - 0.45) / 0.55));
+          op = 1 - ease(clamp01((f - 0.62) / 0.32));
           z = "1";
         } else if (i === b) {
           // Sudut berikutnya: muncul di atas lebih dulu dengan arah putar yang sama.
           rot = (1 - f) * TILT;
-          op = ease(clamp01((f - 0.25) / 0.55));
+          op = ease(clamp01((f - 0.5) / 0.3));
           z = "2";
         }
         el.style.opacity = op.toFixed(3);
