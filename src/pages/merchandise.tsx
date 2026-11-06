@@ -32,8 +32,11 @@ const products = [
   },
 ];
 
-const SECONDS_PER_ANGLE = 0.85;
-const FADE = 0.11;
+const SECONDS_PER_ANGLE = 0.9;
+// Kemiringan tambahan tiap foto saat berpindah sudut, supaya terasa berputar terus.
+const TILT = 18;
+const clamp01 = (v: number) => Math.min(1, Math.max(0, v));
+const ease = (v: number) => v * v * (3 - 2 * v);
 const LABELS = ["depan", "serong kiri", "samping kiri", "serong belakang", "belakang", "serong belakang", "samping kanan", "serong kanan"];
 
 function VestSpinner({ frames, name }: { frames: string[]; name: string }) {
@@ -47,30 +50,67 @@ function VestSpinner({ frames, name }: { frames: string[]; name: string }) {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let raf = 0;
     let last = performance.now();
+    let visible = true;
+    let ready = false;
+    let alive = true;
     const render = () => {
       const p = ((pos.current % n) + n) % n;
+      const a = Math.floor(p) % n;
+      const b = (a + 1) % n;
+      const f = p - Math.floor(p);
       imgs.current.forEach((el, i) => {
         if (!el) return;
-        let d = p - i;
-        if (d > n / 2) d -= n;
-        if (d < -n / 2) d += n;
-        // Tahan tiap sudut sebentar lalu berpindah halus ke sudut berikutnya.
-        const t = Math.abs(d);
-        const op = Math.min(1, Math.max(0, (0.5 + FADE - t) / (2 * FADE)));
-        el.style.opacity = String(op);
-        el.style.transform = `rotateY(${(-d * 22).toFixed(2)}deg)`;
-        el.style.zIndex = String(Math.round((1 - Math.min(t, 1)) * 10));
+        let op = 0;
+        let rot = 0;
+        let z = "0";
+        if (i === a) {
+          // Sudut sekarang: terus memutar pelan, lalu memudar di akhir.
+          rot = -f * TILT;
+          op = 1 - ease(clamp01((f - 0.62) / 0.32));
+          z = "1";
+        } else if (i === b) {
+          // Sudut berikutnya: muncul di atas lebih dulu dengan arah putar yang sama.
+          rot = (1 - f) * TILT;
+          op = ease(clamp01((f - 0.5) / 0.3));
+          z = "2";
+        }
+        el.style.opacity = op.toFixed(3);
+        el.style.transform = `perspective(1200px) rotateY(${rot.toFixed(2)}deg)`;
+        if (el.style.zIndex !== z) el.style.zIndex = z;
       });
     };
     const tick = (now: number) => {
-      const dt = (now - last) / 1000;
+      // Batasi lompatan waktu (mis. setelah pindah tab) supaya tidak meloncat.
+      const dt = Math.min(0.05, (now - last) / 1000);
       last = now;
-      if (!paused && !reduce && !dragging.current) pos.current += dt / SECONDS_PER_ANGLE;
+      if (ready && !paused && !reduce && !dragging.current) pos.current += dt / SECONDS_PER_ANGLE;
       render();
+      raf = visible ? requestAnimationFrame(tick) : 0;
+    };
+    const start = () => {
+      if (raf || !alive) return;
+      last = performance.now();
       raf = requestAnimationFrame(tick);
     };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    // Siapkan semua foto dulu supaya putaran pertama tidak tersendat.
+    Promise.all(imgs.current.map((el) => el?.decode?.().catch(() => undefined))).then(() => {
+      ready = true;
+    });
+    const scene = imgs.current[0]?.closest(".merch-scene");
+    const io =
+      scene && "IntersectionObserver" in window
+        ? new IntersectionObserver(([entry]) => {
+            visible = !!entry?.isIntersecting;
+            if (visible) start();
+          })
+        : null;
+    if (io && scene) io.observe(scene);
+    start();
+    return () => {
+      alive = false;
+      io?.disconnect();
+      cancelAnimationFrame(raf);
+    };
   }, [frames.length, paused]);
 
   return (
@@ -164,9 +204,9 @@ export default function MerchandisePage() {
       <style>{`
         .merch-scene { background: radial-gradient(120% 90% at 50% 20%, #2b2f8f 0%, #1a1c55 45%, #0f1030 100%); align-self: stretch; justify-content: center; }
         .merch-glow { position: absolute; top: 18%; left: 50%; width: 70%; aspect-ratio: 1; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(circle, rgba(110,75,180,.55), rgba(37,99,235,.25) 45%, transparent 70%); filter: blur(10px); animation: merch-pulse 4s ease-in-out infinite; }
-        .merch-stage { perspective: 1400px; width: min(70vw, 300px); aspect-ratio: 3 / 4; position: relative; cursor: grab; background: none; border: 0; padding: 0; touch-action: pan-y; user-select: none; }
+        .merch-stage { width: min(70vw, 300px); aspect-ratio: 3 / 4; position: relative; cursor: grab; background: none; border: 0; padding: 0; touch-action: pan-y; user-select: none; }
         .merch-stage:active { cursor: grabbing; }
-        .merch-float { position: absolute; inset: 0; transform-style: preserve-3d; animation: merch-float 4s ease-in-out infinite; }
+        .merch-float { position: absolute; inset: 0; animation: merch-float 4s ease-in-out infinite; }
         .merch-float.is-paused, .merch-scene:has(.is-paused) .merch-shadow { animation-play-state: paused; }
         .merch-face { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; pointer-events: none; will-change: opacity, transform; }
         .merch-shadow { position: absolute; left: 22%; right: 22%; bottom: 2%; height: 16px; border-radius: 50%; background: rgba(0,0,0,.55); filter: blur(8px); animation: merch-shadow 4s ease-in-out infinite; }
