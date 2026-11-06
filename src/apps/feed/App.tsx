@@ -2,7 +2,7 @@ import gscLogoImage from '@/assets/good-story-cafe-logo.jpg';
 import slide32VideoAsset from '@/assets/nempo-feed-slide-32.mp4.asset.json';
 import slide33VideoAsset from '@/assets/nempo-feed-slide-33.mp4.asset.json';
 import slide34VideoAsset from '@/assets/nempo-feed-slide-34.mp4.asset.json';
-import ggsRatusVideo from '@/assets/ggs-feed-07-ratus-hq.mp4';
+import ggsRatusVideo from '@/assets/ggs-feed-07-ratus-hq.mp4.asset.json';
 import ggsRatusEquipmentVideo from '@/assets/ggs-feed-08-ratus-final.mp4.asset.json';
 import {
   FaFileExcel,
@@ -3156,7 +3156,7 @@ function App() {
             {isGgsRatusVideoSlide ? (
               <>
                 <a
-                  href={activeClientSlide === 8 ? ggsRatusEquipmentVideo.url : ggsRatusVideo}
+                  href={activeClientSlide === 8 ? ggsRatusEquipmentVideo.url : ggsRatusVideo.url}
                   download={`GGS-Feed-0${activeClientSlide}-Promo-Ratus.mp4`}
                   className="inline-flex items-center gap-2 rounded-full bg-[#062f4d] px-4 py-2 text-[11px] font-black text-white shadow-[0_8px_20px_rgba(0,40,78,0.2)] transition-colors hover:bg-[#0b4d69] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#ffdd00] focus-visible:ring-offset-2"
                 >
