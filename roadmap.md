@@ -1,6 +1,6 @@
 # Roadmap
 
-- [ ] GGS slide 7: foto AI dengan tungku ratus, rapikan komposisi tulisan menarik dan tidak terlihat AI; slide 8: alat ratus dengan watermark GGS; perbarui kedua MP4 dan periksa unduhan.
+- [x] GGS slide 7: foto AI dengan tungku ratus dan tipografi rapi tanpa brush/outline; slide 8 fokus alat ratus; watermark asli tetap, kedua MP4 1080×1440 15 detik 30 fps dan unduhan terverifikasi.
 
 - [x] GGS slide 7: watermark header/footer asli terpasang, desain AI diperiksa di komputer/ponsel, MP4 1080×1440 15 detik 30 fps diperbarui dan tombol unduh cocok dengan file baru.
 
