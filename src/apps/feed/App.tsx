@@ -2674,7 +2674,7 @@ function App() {
   const [preparedNempoPng, setPreparedNempoPng] = useState<{
     url: string;
     fileName: string;
-    slide: number;
+    key: string;
   } | null>(null);
   const [downloadError, setDownloadError] = useState<string | null>(null);
   const exportRef = useRef<HTMLElement | null>(null);
@@ -2697,15 +2697,13 @@ function App() {
     activeFeed === 'client' && activeClientSlide === 3;
   const isGgsRatusVideoSlide =
     activeFeed === 'client' && activeClientSlide === 7;
+  const currentDownloadKey = `${activeFeed}:${isGgsFeed ? activeClientSlide : activeSlide}`;
 
   useEffect(() => {
-    if (
-      preparedNempoPng &&
-      (!isNempoFeed || activeSlide !== preparedNempoPng.slide)
-    ) {
+    if (preparedNempoPng && preparedNempoPng.key !== currentDownloadKey) {
       setPreparedNempoPng(null);
     }
-  }, [activeSlide, isNempoFeed, preparedNempoPng]);
+  }, [currentDownloadKey, preparedNempoPng]);
 
   useEffect(() => {
     if (!preparedNempoPng) return;
@@ -2859,22 +2857,8 @@ function App() {
         });
       }
 
-      let downloadHref: string;
-      let generatedObjectUrl: string | null = null;
-      if (isNempoFeed) {
-        const pngBlob = await new Promise<Blob>((resolve, reject) => {
-          renderedCanvas.toBlob((blob) => {
-            if (blob) {
-              resolve(blob);
-            } else {
-              reject(new Error('Tidak dapat menyiapkan berkas PNG.'));
-            }
-          }, 'image/png');
-        });
-        generatedObjectUrl = URL.createObjectURL(pngBlob);
-        downloadHref = generatedObjectUrl;
-      } else {
-        let dataUrl: string;
+      let finalCanvas: HTMLCanvasElement = renderedCanvas;
+      if (!isNempoFeed) {
         if (
           isPhotobooth ||
           isMemberCard ||
@@ -2909,7 +2893,7 @@ function App() {
           activeSlide === 28 ||
           activeSlide === 29
         ) {
-          dataUrl = renderedCanvas.toDataURL('image/png');
+          finalCanvas = renderedCanvas;
         } else {
           const outputCanvas = document.createElement('canvas');
           outputCanvas.width = outputWidth;
@@ -2922,10 +2906,20 @@ function App() {
           context.imageSmoothingEnabled = true;
           context.imageSmoothingQuality = 'high';
           context.drawImage(renderedCanvas, 0, 0, outputWidth, outputHeight);
-          dataUrl = outputCanvas.toDataURL('image/png');
+          finalCanvas = outputCanvas;
         }
-        downloadHref = dataUrl;
       }
+      const pngBlob = await new Promise<Blob>((resolve, reject) => {
+        finalCanvas.toBlob((blob) => {
+          if (blob) {
+            resolve(blob);
+          } else {
+            reject(new Error('Tidak dapat menyiapkan berkas PNG.'));
+          }
+        }, 'image/png');
+      });
+      const generatedObjectUrl = URL.createObjectURL(pngBlob);
+      const downloadHref = generatedObjectUrl;
 
       const fileName =
         isCalendar
@@ -2949,8 +2943,8 @@ function App() {
         /iPad|iPhone|iPod/.test(navigator.userAgent) ||
         (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
-      if (isNempoFeed && isAppleTouchBrowser && generatedObjectUrl) {
-        setPreparedNempoPng({ url: generatedObjectUrl, fileName, slide: activeSlide });
+      if (isAppleTouchBrowser) {
+        setPreparedNempoPng({ url: generatedObjectUrl, fileName, key: currentDownloadKey });
         return;
       }
 
@@ -2960,9 +2954,7 @@ function App() {
       document.body.appendChild(downloadLink);
       downloadLink.click();
       downloadLink.remove();
-      if (generatedObjectUrl) {
-        window.setTimeout(() => URL.revokeObjectURL(generatedObjectUrl), 60_000);
-      }
+      window.setTimeout(() => URL.revokeObjectURL(generatedObjectUrl), 60_000);
     } catch (error) {
       setDownloadError('PNG tidak berhasil disiapkan. Silakan coba lagi.');
       console.error(
@@ -3171,7 +3163,7 @@ function App() {
                   Video {activeClientSlide === 7 ? 20 : 15} detik · 1080×1440 · 30 fps.
                 </p>
               </>
-            ) : isNempoFeed && preparedNempoPng?.slide === activeSlide ? (
+            ) : preparedNempoPng?.key === currentDownloadKey ? (
               <>
                 <a
                   href={preparedNempoPng.url}
