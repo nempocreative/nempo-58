@@ -2,6 +2,7 @@ import type { RefObject } from 'react';
 import ratusScene from '@/assets/ggs-ratus-scene.jpg';
 import clientPhoto from '@/assets/ggs-ratus-client-spa.jpg';
 import ggsWatermark from '@/assets/ggs-header-footer.png.asset.json';
+import { GGS_SLIDE_7_DURATION_SECONDS } from './ggs-ratus-timeline';
 import './GgsRatusPromoSlide.css';
 
 /** Pink paint-brush swipe used behind "Promo" and the new price. */
@@ -29,7 +30,7 @@ function BrushStroke({ className }: { className: string }) {
 /**
  * GGS Feed slide 7 — promo Ratus (Rp50.000 → Rp45.000), pink Barbie.
  * Full-bleed AI spa scene built from the owner's photo of the ratus stool,
- * with animated lettering on one 15 s CSS timeline (`ggr-`) so the preview
+ * with a 20 s client / 15 s equipment CSS timeline (`ggr-`) so the preview
  * loops seamlessly and the MP4 is recorded frame-for-frame.
  */
 export function GgsRatusPromoSlide({
@@ -43,6 +44,7 @@ export function GgsRatusPromoSlide({
     <main
       ref={exportRef}
       aria-label="GGS Beauty — Promo Ratus, dari Rp50.000 jadi Rp45.000"
+      data-duration={subject === 'client' ? GGS_SLIDE_7_DURATION_SECONDS : 15}
       className={`ggr-root ggr-root--${subject}`}
     >
       <div className="ggr-scene" aria-hidden="true">
@@ -59,7 +61,33 @@ export function GgsRatusPromoSlide({
       </>}
       <div className="ggr-veil" aria-hidden="true" />
 
-      <section className="ggr-copy">
+      {subject === 'client' ? (
+        <section className="ggr-changing-copy" aria-label="Promo Ratus — Rp50.000 menjadi Rp45.000 — Booking Now">
+          <div className="ggr-copy-phase ggr-copy-phase--1">
+            <p className="ggr-phase-label">GGS Beauty</p>
+            <h1 className="ggr-phase-title">Ratus</h1>
+          </div>
+          <div className="ggr-copy-phase ggr-copy-phase--2">
+            <p className="ggr-phase-label">Ratus</p>
+            <p className="ggr-phase-title">Promo</p>
+            <p className="ggr-phase-old">dari <s>50.000</s></p>
+          </div>
+          <div className="ggr-copy-phase ggr-copy-phase--3">
+            <p className="ggr-phase-label">Promo Ratus</p>
+            <p className="ggr-phase-old">dari <s>50.000</s></p>
+            <p className="ggr-phase-price">45.000</p>
+          </div>
+          <div className="ggr-copy-phase ggr-copy-phase--4">
+            <p className="ggr-phase-label">GGS Beauty</p>
+            <p className="ggr-phase-title">Ratus</p>
+            <p className="ggr-phase-price">45.000</p>
+          </div>
+          <div className="ggr-copy-phase ggr-copy-phase--5">
+            <p className="ggr-phase-label">Promo Ratus · 45.000</p>
+            <p className="ggr-phase-booking">Booking<br />Now</p>
+          </div>
+        </section>
+      ) : <section className="ggr-copy">
         <h1 className="ggr-title">
           <span className="ggr-title-word">Ratus</span>
           <svg className="ggr-swash" viewBox="0 0 300 30" aria-hidden="true">
@@ -99,7 +127,7 @@ export function GgsRatusPromoSlide({
             <i />
           </span>
         </p>
-      </section>
+      </section>}
 
       <img
         src={ggsWatermark.url}
