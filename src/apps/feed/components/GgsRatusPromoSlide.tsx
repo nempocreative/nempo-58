@@ -1,6 +1,6 @@
 import type { RefObject } from 'react';
 import ratusScene from '@/assets/ggs-ratus-scene.jpg';
-import clientPhoto from '@/assets/ggs-ratus-client-photo.jpeg.asset.json';
+import clientPhoto from '@/assets/ggs-ratus-client-spa.jpg';
 import ggsWatermark from '@/assets/ggs-header-footer.png.asset.json';
 import './GgsRatusPromoSlide.css';
 
@@ -46,7 +46,7 @@ export function GgsRatusPromoSlide({
       className={`ggr-root ggr-root--${subject}`}
     >
       <div className="ggr-scene" aria-hidden="true">
-        <img src={subject === 'client' ? clientPhoto.url : ratusScene} alt="" draggable={false} />
+        <img src={subject === 'client' ? clientPhoto : ratusScene} alt="" draggable={false} />
       </div>
       {subject === 'equipment' && <>
       <div className="ggr-candle" aria-hidden="true" />
